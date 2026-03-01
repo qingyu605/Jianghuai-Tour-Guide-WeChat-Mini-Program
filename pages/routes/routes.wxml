@@ -1,0 +1,77 @@
+<view class="container">
+  <!-- 路线列表 -->
+  <view wx:if="{{!routeDetail}}">
+    <view class="page-title">旅游路线</view>
+    
+    <view class="routes-list">
+      <block wx:for="{{routes}}" wx:key="id">
+        <view class="route-item card" bindtap="navigateToRouteDetail" data-id="{{item.id}}">
+          <image src="{{item.image}}" mode="widthFix" class="route-image"></image>
+          <view class="route-info">
+            <text class="route-name font-lg">{{item.name}}</text>
+            <text class="route-days color-gray font-sm">行程 {{item.days}} 天</text>
+            <text class="route-desc color-lightgray font-sm line-clamp-2 mt-10">{{item.description}}</text>
+            
+            <view class="attractions-preview mt-20">
+              <text class="preview-label color-gray">包含景点：</text>
+              <block wx:for="{{item.attractions}}" wx:key="index">
+                <text 
+                  class="attraction-tag" 
+                  bindtap="{{item.id ? 'navigateToDetail' : ''}}" 
+                  data-id="{{item.id}}"
+                >
+                  {{item.name || item}}
+                </text>
+              </block>
+            </view>
+          </view>
+        </view>
+      </block>
+    </view>
+  </view>
+  
+  <!-- 路线详情 -->
+  <view wx:if="{{routeDetail}}">
+    <image src="{{routeDetail.image}}" mode="widthFix" class="detail-image"></image>
+    
+    <view class="route-basic card p-30">
+      <text class="route-name font-lg">{{routeDetail.name}}</text>
+      <text class="route-days color-gray font-sm mt-10">行程 {{routeDetail.days}} 天</text>
+      <text class="route-desc color-lightgray font-sm mt-10">{{routeDetail.description}}</text>
+      
+      <button class="save-btn primary-btn btn mt-20" bindtap="saveRoute">
+        <icon type="download" size="24" color="white" class="save-icon"></icon>
+        保存路线
+      </button>
+    </view>
+    
+    <view class="route-attractions card p-30">
+      <text class="section-title font-lg">包含景点</text>
+      <view class="attractions-list mt-20">
+        <block wx:for="{{routeDetail.attractions}}" wx:key="index">
+          <view 
+            class="attraction-item" 
+            bindtap="{{item.id ? 'navigateToDetail' : ''}}" 
+            data-id="{{item.id}}"
+          >
+            <icon type="location" size="28" color="#1E88E5" class="attraction-icon"></icon>
+            <text class="attraction-name">{{item.name || item}}</text>
+            <text class="attraction-location color-gray font-sm">{{item.location}}</text>
+          </view>
+        </block>
+      </view>
+    </view>
+    
+    <view class="route-itinerary card p-30">
+      <text class="section-title font-lg">行程安排</text>
+      <view class="itinerary-list mt-20">
+        <block wx:for="{{routeDetail.itinerary}}" wx:key="index">
+          <view class="itinerary-item">
+            <view class="day-mark">D{{index + 1}}</view>
+            <text class="itinerary-content color-gray">{{item}}</text>
+          </view>
+        </block>
+      </view>
+    </view>
+  </view>
+</view>

@@ -1,0 +1,112 @@
+<view class="container">
+  <!-- 用户信息 -->
+  <view class="user-info card p-30">
+    <block wx:if="{{hasUserInfo}}">
+      <image src="{{userInfo.avatarUrl}}" class="avatar"></image>
+      <text class="nickname font-lg">{{userInfo.nickName}}</text>
+    </block>
+    <block wx:else>
+      <button 
+        open-type="getUserInfo" 
+        bindgetuserinfo="onGetUserInfo"
+        class="login-btn primary-btn btn"
+      >
+        点击登录
+      </button>
+    </block>
+  </view>
+  
+  <!-- 功能入口 -->
+  <view class="functions-container card">
+    <view class="function-item" bindtap="navigateToAttractions">
+      <icon type="location" size="30" color="#1E88E5" class="function-icon"></icon>
+      <text class="function-name">浏览景点</text>
+      <icon type="arrowright" size="28" color="#999" class="arrow-icon"></icon>
+    </view>
+    <view class="function-item" bindtap="navigateToRoutes">
+      <icon type="map" size="30" color="#1E88E5" class="function-icon"></icon>
+      <text class="function-name">旅游路线</text>
+      <icon type="arrowright" size="28" color="#999" class="arrow-icon"></icon>
+    </view>
+  </view>
+  
+  <!-- 内容标签页 -->
+  <view class="tabs-container">
+    <view class="tabs-header">
+      <view 
+        class="tab-item {{activeTab === 'favorites' ? 'active' : ''}}"
+        bindtap="switchTab"
+        data-tab="favorites"
+      >
+        我的收藏
+      </view>
+      <view 
+        class="tab-item {{activeTab === 'routes' ? 'active' : ''}}"
+        bindtap="switchTab"
+        data-tab="routes"
+      >
+        我的路线
+      </view>
+    </view>
+    
+    <!-- 收藏列表 -->
+    <view class="tab-content" wx:if="{{activeTab === 'favorites'}}">
+      <block wx:for="{{favorites}}" wx:key="id">
+        <view class="favorite-item card">
+          <view class="item-content" bindtap="navigateToDetail" data-id="{{item.id}}">
+            <image src="{{item.image}}" mode="widthFix" class="item-image"></image>
+            <view class="item-info">
+              <text class="item-name font-lg">{{item.name}}</text>
+              <text class="item-location color-gray font-sm">{{item.location}}</text>
+              <text class="item-time color-lightgray font-sm">
+                收藏于 {{formatTime(item.addTime)}}
+              </text>
+              <view class="item-tags mt-10">
+                <text class="level-tag">{{item.level}}</text>
+                <text class="category-tag">{{item.category}}</text>
+              </view>
+            </view>
+          </view>
+          <view class="delete-btn" bindtap="deleteFavorite" data-id="{{item.id}}">
+            <icon type="clear" size="28" color="#F44336"></icon>
+          </view>
+        </view>
+      </block>
+      
+      <!-- 空状态 -->
+      <view class="empty-state" wx:if="{{favorites.length === 0}}">
+        <image src="/images/icons/empty-favorite.png" class="empty-icon"></image>
+        <text class="empty-text">暂无收藏的景点</text>
+        <text class="empty-desc color-lightgray mt-10">去浏览景点并收藏你喜欢的吧</text>
+      </view>
+    </view>
+    
+    <!-- 路线列表 -->
+    <view class="tab-content" wx:if="{{activeTab === 'routes'}}">
+      <block wx:for="{{savedRoutes}}" wx:key="id">
+        <view class="saved-route-item card">
+          <view class="item-content" bindtap="navigateToRouteDetail" data-id="{{item.id}}">
+            <image src="{{item.image}}" mode="widthFix" class="item-image"></image>
+            <view class="item-info">
+              <text class="item-name font-lg">{{item.name}}</text>
+              <text class="item-days color-gray font-sm">行程 {{item.days}} 天</text>
+              <text class="item-time color-lightgray font-sm">
+                保存于 {{formatTime(item.saveTime)}}
+              </text>
+            </view>
+          </view>
+          <view class="delete-btn" bindtap="deleteRoute" data-id="{{item.id}}">
+            <icon type="clear" size="28" color="#F44336"></icon>
+          </view>
+        </view>
+      </block>
+      
+      <!-- 空状态 -->
+      <view class="empty-state" wx:if="{{savedRoutes.length === 0}}">
+        <image src="/images/icons/empty-route.png" class="empty-icon"></image>
+        <text class="empty-text">暂无保存的路线</text>
+        <text class="empty-desc color-lightgray mt-10">去浏览路线并保存你喜欢的吧</text>
+      </view>
+    </view>
+  </view>
+</view>

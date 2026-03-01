@@ -1,0 +1,53 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/attractions/attractions",
+    "pages/detail/detail",
+    "pages/routes/routes",
+    "pages/my/my"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#1E88E5",
+    "navigationBarTitleText": "江淮风景线",
+    "navigationBarTextStyle": "white"
+  },
+  "tabBar": {
+    "color": "#666",
+    "selectedColor": "#1E88E5",
+    "backgroundColor": "#fff",
+    "borderStyle": "black",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "首页",
+        "iconPath": "/images/tab/home.png",
+        "selectedIconPath": "/images/tab/home-o.png"
+      },
+      {
+        "pagePath": "pages/attractions/attractions",
+        "text": "景点",
+        "iconPath": "/images/tab/circle.png",
+        "selectedIconPath": "/images/tab/circle-o.png"
+      },
+      {
+        "pagePath": "pages/routes/routes",
+        "text": "路线",
+        "iconPath": "/images/tab/aid.png",
+        "selectedIconPath": "/images/tab/aid-o.png"
+      },
+      {
+        "pagePath": "pages/my/my",
+        "text": "我的",
+        "iconPath": "/images/tab/my.png",
+        "selectedIconPath": "/images/tab/my-o.png"
+      }
+    ]
+  },
+  "permission": {
+    "scope.userLocation": {
+      "desc": "需要获取您的位置信息，以便为您推荐附近的景点"
+    }
+  },
+  "sitemapLocation": "sitemap.json"
+}

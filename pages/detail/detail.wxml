@@ -1,0 +1,92 @@
+<view class="container">
+  <!-- 图片展示区 -->
+  <view class="image-container">
+    <image 
+      src="{{attraction.images[currentImageIndex]}}" 
+      mode="widthFix" 
+      class="main-image"
+      bindtap="previewImage"
+      data-img="{{attraction.images[currentImageIndex]}}"
+    ></image>
+    
+    <!-- 图片切换按钮 -->
+    <view class="image-nav" wx:if="{{attraction.images.length > 1}}">
+      <view class="image-btn prev-btn" bindtap="changeImage" data-direction="prev">
+        <icon type="left" size="36" color="white"></icon>
+      </view>
+      <view class="image-btn next-btn" bindtap="changeImage" data-direction="next">
+        <icon type="right" size="36" color="white"></icon>
+      </view>
+      <view class="image-counter">
+        {{currentImageIndex + 1}} / {{attraction.images.length}}
+      </view>
+    </view>
+    
+    <!-- 收藏按钮 -->
+    <view class="favorite-btn" bindtap="toggleFavorite">
+      <icon 
+        type="{{isFavorite ? 'star' : 'star-o'}}" 
+        size="40" 
+        color="{{isFavorite ? '#FFD700' : 'white'}}"
+      ></icon>
+    </view>
+  </view>
+  
+  <!-- 基本信息 -->
+  <view class="basic-info card p-30">
+    <view class="info-header">
+      <text class="attraction-name font-lg">{{attraction.name}}</text>
+      <text class="level-tag">{{attraction.level}}</text>
+    </view>
+    
+    <view class="location-info mt-20">
+      <icon type="location" size="28" color="#1E88E5"></icon>
+      <text class="location-text color-gray">{{attraction.location}}</text>
+    </view>
+    
+    <view class="category-info mt-10">
+      <text class="category-tag">{{attraction.category}}</text>
+    </view>
+  </view>
+  
+  <!-- 详细介绍 -->
+  <view class="detail-info card p-30">
+    <text class="section-title font-lg">景点介绍</text>
+    <text class="description mt-20 color-gray">{{attraction.description}}</text>
+  </view>
+  
+  <!-- 实用信息 -->
+  <view class="practical-info card p-30">
+    <text class="section-title font-lg">实用信息</text>
+    
+    <view class="info-item mt-20">
+      <text class="info-label">开放时间：</text>
+      <text class="info-value color-gray">{{attraction.openingHours}}</text>
+    </view>
+    
+    <view class="info-item mt-10">
+      <text class="info-label">门票价格：</text>
+      <text class="info-value color-gray">{{attraction.ticketPrice}}</text>
+    </view>
+  </view>
+  
+  <!-- 功能按钮 -->
+  <view class="function-buttons p-30">
+    <view class="btn-group">
+      <view class="audio-control" bindtap="{{isPlaying ? 'pauseAudio' : 'playAudio'}}">
+        <icon 
+          type="{{isPlaying ? 'pause' : 'play'}}" 
+          size="30" 
+          color="white" 
+          class="audio-icon"
+        ></icon>
+        <text class="audio-text">语音导览</text>
+      </view>
+      
+      <view class="location-btn" bindtap="openLocation">
+        <icon type="map" size="30" color="white" class="location-icon"></icon>
+        <text class="location-text">地图导航</text>
+      </view>
+    </view>
+  </view>
+</view>

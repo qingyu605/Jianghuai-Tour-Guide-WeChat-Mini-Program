@@ -1,0 +1,69 @@
+<view class="container">
+  <!-- 轮播图 -->
+  <view class="banner-container">
+    <swiper circular indicator-dots="{{true}}" autoplay="{{true}}" interval="5000" duration="500">
+      <block wx:for="{{banners}}" wx:key="id">
+        <swiper-item>
+          <image src="{{item.image}}" mode="widthFix" class="banner-image"></image>
+        </swiper-item>
+      </block>
+    </swiper>
+  </view>
+  
+  <!-- 功能入口 -->
+  <view class="features-container card">
+    <view class="features-grid">
+      <block wx:for="{{features}}" wx:key="id">
+        <view class="feature-item" bindtap="{{item.bindtap}}">
+          <image src="{{item.icon}}" class="feature-icon"></image>
+          <text class="feature-name">{{item.name}}</text>
+        </view>
+      </block>
+    </view>
+  </view>
+  
+  <!-- 推荐景点 -->
+  <view class="recommended-container">
+    <view class="section-header">
+      <text class="section-title">推荐景点</text>
+      <text class="more-btn" bindtap="navigateToAttractions">更多</text>
+    </view>
+    
+    <view class="attractions-grid">
+      <block wx:for="{{recommendedAttractions}}" wx:key="id">
+        <view class="attraction-card" bindtap="navigateToDetail" data-id="{{item.id}}">
+          <image src="{{item.image}}" mode="widthFix" class="attraction-image"></image>
+          <view class="attraction-info">
+            <text class="attraction-name">{{item.name}}</text>
+            <text class="attraction-location color-gray font-sm">{{item.location}}</text>
+            <view class="attraction-level">
+              <text class="level-tag">{{item.level}}</text>
+              <text class="category-tag">{{item.category}}</text>
+            </view>
+          </view>
+        </view>
+      </block>
+    </view>
+  </view>
+  
+  <!-- 热门路线 -->
+  <view class="routes-container">
+    <view class="section-header">
+      <text class="section-title">热门路线</text>
+      <text class="more-btn" bindtap="navigateToRoutes">更多</text>
+    </view>
+    
+    <view class="routes-list">
+      <block wx:for="{{hotRoutes}}" wx:key="id">
+        <view class="route-item card" bindtap="navigateToRouteDetail" data-id="{{item.id}}">
+          <image src="{{item.image}}" mode="widthFix" class="route-image"></image>
+          <view class="route-info">
+            <text class="route-name font-lg">{{item.name}}</text>
+            <text class="route-days color-gray font-sm">行程 {{item.days}} 天</text>
+            <text class="route-desc color-lightgray font-sm line-clamp-2">{{item.description}}</text>
+          </view>
+        </view>
+      </block>
+    </view>
+  </view>
+</view>
