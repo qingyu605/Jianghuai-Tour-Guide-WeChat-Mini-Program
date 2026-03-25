@@ -1,0 +1,382 @@
+.image-hero {
+  margin: 20rpx 20rpx 10rpx;
+}
+
+.image-container {
+  position: relative;
+  width: 100%;
+  border-radius: 20rpx;
+  overflow: hidden;
+}
+
+.main-swiper {
+  width: 100%;
+  height: 420rpx;
+}
+
+.main-image {
+  width: 100%;
+  height: 420rpx;
+  object-fit: cover;
+}
+
+.image-overlay {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  padding: 80rpx 22rpx 18rpx;
+  background: linear-gradient(180deg, rgba(8, 24, 48, 0) 0%, rgba(8, 24, 48, 0.72) 100%);
+}
+
+.hero-name {
+  display: block;
+  color: #fff;
+  font-size: 38rpx;
+  font-weight: 700;
+}
+
+.hero-slogan {
+  display: block;
+  color: rgba(255, 255, 255, 0.92);
+  font-size: 24rpx;
+  margin-top: 8rpx;
+}
+
+.hero-badge-row {
+  margin-top: 12rpx;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10rpx;
+}
+
+.hero-badge {
+  font-size: 21rpx;
+  color: #eaf3ff;
+  border: 1px solid rgba(234, 243, 255, 0.45);
+  border-radius: 20rpx;
+  padding: 4rpx 12rpx;
+  background: rgba(14, 62, 124, 0.35);
+}
+
+.image-nav {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: space-between;
+  pointer-events: none;
+}
+
+.image-btn {
+  width: 56rpx;
+  height: 56rpx;
+  margin: auto 10rpx;
+  border-radius: 28rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(6, 23, 46, 0.22);
+  pointer-events: auto;
+  transition: all 160ms ease;
+  opacity: 0.78;
+}
+
+.image-btn:active {
+  background-color: rgba(6, 23, 46, 0.46);
+  transform: scale(0.94);
+  opacity: 1;
+}
+
+.nav-arrow {
+  color: #fff;
+  font-size: 42rpx;
+  font-weight: 700;
+  line-height: 1;
+  text-shadow: 0 2rpx 6rpx rgba(0, 0, 0, 0.35);
+}
+
+.image-counter {
+  position: absolute;
+  top: 16rpx;
+  left: 16rpx;
+  background-color: rgba(6, 23, 46, 0.52);
+  color: #fff;
+  font-size: 22rpx;
+  padding: 6rpx 12rpx;
+  border-radius: 20rpx;
+}
+
+.favorite-btn {
+  position: absolute;
+  top: 14rpx;
+  right: 14rpx;
+  width: 118rpx;
+  height: 56rpx;
+  padding: 0 10rpx;
+  background-color: rgba(6, 23, 46, 0.45);
+  border-radius: 28rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8rpx;
+  transition: transform 140ms ease, background-color 140ms ease;
+}
+
+.favorite-btn:active {
+  transform: scale(0.96);
+  background-color: rgba(6, 23, 46, 0.62);
+}
+
+.favorite-mini-icon {
+  width: 22rpx;
+  height: 22rpx;
+  filter: brightness(1.9);
+}
+
+.thumb-list {
+  display: flex;
+  gap: 10rpx;
+  margin-top: 10rpx;
+  overflow-x: auto;
+  padding-bottom: 6rpx;
+}
+
+.thumb-item {
+  width: 104rpx;
+  height: 76rpx;
+  border-radius: 10rpx;
+  opacity: 0.62;
+  border: 2rpx solid transparent;
+  flex-shrink: 0;
+}
+
+.thumb-item.active {
+  opacity: 1;
+  border-color: #0b7de5;
+}
+
+.info-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.attraction-name {
+  font-weight: bold;
+}
+
+.attraction-slogan {
+  display: block;
+  font-size: 24rpx;
+  color: #537698;
+}
+
+.level-tag {
+  font-size: 26rpx;
+  background-color: #ff9800;
+  color: #fff;
+  padding: 3rpx 10rpx;
+  border-radius: 4rpx;
+}
+
+.location-info {
+  display: flex;
+  align-items: center;
+}
+
+.location-text {
+  margin-left: 10rpx;
+  font-size: 30rpx;
+}
+
+.category-tag {
+  display: inline-block;
+  font-size: 26rpx;
+  background-color: #e0e0e0;
+  color: #666;
+  padding: 3rpx 10rpx;
+  border-radius: 4rpx;
+}
+
+.section-title {
+  font-weight: bold;
+  color: #333;
+  padding-bottom: 10rpx;
+  border-bottom: 1px solid #eee;
+}
+
+.description {
+  line-height: 1.7;
+  font-size: 30rpx;
+}
+
+.profile-row {
+  display: flex;
+  gap: 16rpx;
+}
+
+.profile-tag {
+  flex: 1;
+  background: #eef5ff;
+  border-radius: 14rpx;
+  padding: 12rpx 16rpx;
+}
+
+.profile-label {
+  display: block;
+  font-size: 22rpx;
+  color: #6184a8;
+}
+
+.profile-value {
+  display: block;
+  font-size: 28rpx;
+  font-weight: 700;
+  color: #1f4c7e;
+  margin-top: 4rpx;
+}
+
+.crowd-advice {
+  display: block;
+  color: #6a809e;
+  font-size: 24rpx;
+}
+
+.highlight-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10rpx;
+}
+
+.highlight-chip {
+  padding: 6rpx 14rpx;
+  border-radius: 22rpx;
+  background-color: #eaf4ff;
+  color: #2869ad;
+  font-size: 24rpx;
+}
+
+.info-item {
+  display: flex;
+}
+
+.info-label {
+  color: #333;
+  font-weight: 500;
+  width: 160rpx;
+}
+
+.info-value {
+  flex: 1;
+}
+
+.function-buttons {
+  background-color: #fff;
+}
+
+.btn-group {
+  display: flex;
+  gap: 30rpx;
+}
+
+.audio-control,
+.location-btn {
+  flex: 1;
+  background: linear-gradient(180deg, #1773de 0%, #0b5fcc 100%);
+  color: #fff;
+  border-radius: 14rpx;
+  padding: 18rpx 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 10rpx 24rpx rgba(11, 95, 204, 0.25);
+}
+
+.btn-icon-wrap {
+  width: 44rpx;
+  height: 44rpx;
+  border-radius: 22rpx;
+  background-color: rgba(255, 255, 255, 0.88);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 12rpx;
+}
+
+.btn-icon {
+  width: 26rpx;
+  height: 26rpx;
+  filter: saturate(1.5) contrast(1.1) brightness(0.7);
+}
+
+.audio-text,
+.btn-label {
+  color: #fff;
+  font-weight: 600;
+}
+
+.guide-mask {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.45);
+  display: flex;
+  align-items: flex-end;
+  z-index: 999;
+}
+
+.guide-panel {
+  width: 100%;
+  max-height: 74vh;
+  background-color: #fff;
+  border-top-left-radius: 24rpx;
+  border-top-right-radius: 24rpx;
+  padding: 26rpx;
+  box-sizing: border-box;
+}
+
+.guide-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 14rpx;
+}
+
+.guide-title {
+  font-size: 34rpx;
+  font-weight: 700;
+  color: #1f2f4a;
+}
+
+.guide-close {
+  color: #0b5fcc;
+  font-size: 28rpx;
+}
+
+.guide-content {
+  max-height: 62vh;
+}
+
+.guide-text {
+  white-space: pre-wrap;
+  line-height: 1.75;
+  color: #334155;
+  font-size: 28rpx;
+}
+
+.cover-skeleton {
+  height: 420rpx;
+}
+
+.line {
+  border-radius: 12rpx;
+  height: 24rpx;
+}
+
+.line.long { width: 92%; }
+.line.short { width: 58%; }

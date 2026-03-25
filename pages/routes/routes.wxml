@@ -1,0 +1,52 @@
+<view class="container" bindtap="clearTextSelection">
+  <view class="head fade-in">
+    <text user-select="{{allowTextSelect}}" class="head-title">路线产品库</text>
+    <text user-select="{{allowTextSelect}}" class="head-subtitle">覆盖短途、文化与深度体验路线</text>
+  </view>
+
+  <view class="tips-card card fade-in-delay-1">
+    <text user-select="{{allowTextSelect}}" class="tips-title">路线使用建议</text>
+    <block wx:for="{{routeTips}}" wx:key="index">
+      <text user-select="{{allowTextSelect}}" class="tips-item">{{index + 1}}. {{item}}</text>
+    </block>
+  </view>
+
+  <view class="crowd-row fade-in-delay-1">
+    <block wx:for="{{crowdRecommend}}" wx:key="id">
+      <view class="crowd-card card">
+        <text user-select="{{allowTextSelect}}" class="crowd-title">{{item.title}}</text>
+        <text user-select="{{allowTextSelect}}" class="crowd-desc">{{item.desc}}</text>
+      </view>
+    </block>
+  </view>
+
+  <block wx:if="{{isLoading}}">
+    <view class="card p-20">
+      <view class="skeleton route-skeleton"></view>
+    </view>
+    <view class="card p-20">
+      <view class="skeleton route-skeleton"></view>
+    </view>
+  </block>
+
+  <view class="routes-list" wx:else>
+    <block wx:for="{{routes}}" wx:key="id">
+      <view class="route-item card pressable fade-in-delay-1" bindtap="navigateToRouteDetail" data-id="{{item.id}}">
+        <image src="{{item.image}}" mode="aspectFill" class="route-image"></image>
+        <view class="route-info">
+          <text user-select="{{allowTextSelect}}" class="route-name">{{item.name}}</text>
+          <text user-select="{{allowTextSelect}}" class="route-days">{{item.days}}天可落地行程</text>
+          <text user-select="{{allowTextSelect}}" class="route-desc line-clamp-2">{{item.description}}</text>
+
+          <view class="attractions-preview">
+            <block wx:for="{{item.attractions}}" wx:key="index">
+              <text user-select="{{allowTextSelect}}" class="attraction-tag pressable" catchtap="navigateToDetail" data-id="{{item.id}}">
+                {{item.name}}
+              </text>
+            </block>
+          </view>
+        </view>
+      </view>
+    </block>
+  </view>
+</view>

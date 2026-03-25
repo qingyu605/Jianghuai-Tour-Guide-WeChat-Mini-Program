@@ -1,0 +1,118 @@
+.head {
+  padding: 26rpx 30rpx 14rpx;
+}
+
+.head-title {
+  display: block;
+  font-size: 40rpx;
+  font-weight: 700;
+  color: #183a61;
+}
+
+.head-subtitle {
+  display: block;
+  margin-top: 8rpx;
+  color: #6f859f;
+  font-size: 24rpx;
+}
+
+.tips-card {
+  padding: 18rpx 20rpx;
+}
+
+.tips-title {
+  display: block;
+  font-size: 28rpx;
+  font-weight: 700;
+  color: #21466f;
+}
+
+.tips-item {
+  display: block;
+  margin-top: 8rpx;
+  font-size: 23rpx;
+  color: #637e9f;
+  line-height: 1.6;
+}
+
+.crowd-row {
+  display: flex;
+  gap: 12rpx;
+  padding: 0 20rpx 6rpx;
+}
+
+.crowd-card {
+  flex: 1;
+  padding: 16rpx;
+}
+
+.crowd-title {
+  display: block;
+  font-size: 25rpx;
+  font-weight: 700;
+  color: #1f4f81;
+}
+
+.crowd-desc {
+  display: block;
+  margin-top: 8rpx;
+  font-size: 22rpx;
+  color: #6e85a3;
+  line-height: 1.5;
+}
+
+.route-item {
+  display: flex;
+  padding: 16rpx;
+}
+
+.route-image {
+  width: 220rpx;
+  height: 170rpx;
+  border-radius: 14rpx;
+}
+
+.route-info {
+  flex: 1;
+  padding-left: 18rpx;
+}
+
+.route-name {
+  display: block;
+  font-size: 30rpx;
+  font-weight: 700;
+  color: #1f3858;
+}
+
+.route-days {
+  display: block;
+  margin-top: 8rpx;
+  color: #0b7de5;
+  font-size: 23rpx;
+}
+
+.route-desc {
+  margin-top: 8rpx;
+  color: #748aa3;
+  font-size: 24rpx;
+}
+
+.attractions-preview {
+  margin-top: 12rpx;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8rpx;
+}
+
+.attraction-tag {
+  background-color: #eaf4ff;
+  color: #2168ac;
+  border-radius: 20rpx;
+  padding: 4rpx 12rpx;
+  font-size: 22rpx;
+}
+
+.route-skeleton {
+  height: 176rpx;
+  border-radius: 16rpx;
+}

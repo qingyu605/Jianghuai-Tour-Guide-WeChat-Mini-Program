@@ -1,0 +1,78 @@
+<view class="container" bindtap="clearTextSelection">
+  <view class="profile-hero fade-in">
+    <view class="user-info card p-30">
+      <block wx:if="{{hasUserInfo}}">
+        <image src="{{userInfo.avatarUrl}}" class="avatar"></image>
+        <text user-select="{{allowTextSelect}}" class="nickname">{{userInfo.nickName}}</text>
+        <text user-select="{{allowTextSelect}}" class="user-subtitle">欢迎回来，祝你旅途愉快</text>
+      </block>
+      <block wx:else>
+        <text user-select="{{allowTextSelect}}" class="guest-title">登录后同步你的旅行资产</text>
+        <text user-select="{{allowTextSelect}}" class="guest-subtitle">收藏景点、保存路线、随时查看</text>
+        <button bindtap="onGetUserProfile" class="login-btn primary-btn btn pressable">微信快捷登录</button>
+      </block>
+    </view>
+  </view>
+
+  <block wx:if="{{isLoading}}">
+    <view class="card p-20">
+      <view class="skeleton stat-skeleton"></view>
+    </view>
+    <view class="card p-20">
+      <view class="skeleton list-skeleton"></view>
+    </view>
+  </block>
+
+  <block wx:else>
+    <view class="stats-row fade-in-delay-1">
+      <view class="stat-card card pressable" bindtap="navigateToFavoritesPage">
+        <text user-select="{{allowTextSelect}}" class="stat-num">{{stats.favoriteCount}}</text>
+        <text user-select="{{allowTextSelect}}" class="stat-label">收藏景点</text>
+      </view>
+      <view class="stat-card card pressable" bindtap="navigateToSavedRoutesPage">
+        <text user-select="{{allowTextSelect}}" class="stat-num">{{stats.routeCount}}</text>
+        <text user-select="{{allowTextSelect}}" class="stat-label">保存路线</text>
+      </view>
+    </view>
+
+    <view class="functions-container card fade-in-delay-1">
+      <view class="function-item pressable" bindtap="navigateToAttractions">
+        <icon type="location" size="24" color="#1E88E5"></icon>
+        <text user-select="{{allowTextSelect}}" class="function-name">浏览景点</text>
+        <icon type="arrowright" size="20" color="#9cafc4"></icon>
+      </view>
+      <view class="function-item pressable" bindtap="navigateToRoutes">
+        <icon type="map" size="24" color="#1E88E5"></icon>
+        <text user-select="{{allowTextSelect}}" class="function-name">浏览路线</text>
+        <icon type="arrowright" size="20" color="#9cafc4"></icon>
+      </view>
+      <view class="function-item pressable" bindtap="navigateToAbout">
+        <icon type="info" size="24" color="#1E88E5"></icon>
+        <text user-select="{{allowTextSelect}}" class="function-name">使用说明</text>
+        <icon type="arrowright" size="20" color="#9cafc4"></icon>
+      </view>
+      <view class="function-item pressable" bindtap="navigateToPolicy">
+        <icon type="warn" size="24" color="#1E88E5"></icon>
+        <text user-select="{{allowTextSelect}}" class="function-name">隐私与政策</text>
+        <icon type="arrowright" size="20" color="#9cafc4"></icon>
+      </view>
+    </view>
+
+    <view class="tips-card card fade-in-delay-1">
+      <text user-select="{{allowTextSelect}}" class="tips-title">使用建议</text>
+      <block wx:for="{{serviceTips}}" wx:key="index">
+        <text user-select="{{allowTextSelect}}" class="tips-item">{{index + 1}}. {{item}}</text>
+      </block>
+    </view>
+
+    <view class="faq-card card fade-in-delay-2">
+      <text user-select="{{allowTextSelect}}" class="faq-title">常见问题</text>
+      <block wx:for="{{faqList}}" wx:key="id">
+        <view class="faq-item">
+          <text user-select="{{allowTextSelect}}" class="faq-q">Q：{{item.q}}</text>
+          <text user-select="{{allowTextSelect}}" class="faq-a">A：{{item.a}}</text>
+        </view>
+      </block>
+    </view>
+  </block>
+</view>

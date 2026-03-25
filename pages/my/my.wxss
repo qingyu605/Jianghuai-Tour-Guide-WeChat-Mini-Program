@@ -1,0 +1,204 @@
+.profile-hero {
+  padding: 20rpx 0 0;
+}
+
+.user-info {
+  background: linear-gradient(135deg, #1179e1 0%, #0d5eb8 100%);
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.avatar {
+  width: 128rpx;
+  height: 128rpx;
+  border-radius: 64rpx;
+  border: 4rpx solid rgba(255, 255, 255, 0.88);
+}
+
+.nickname {
+  margin-top: 14rpx;
+  font-size: 34rpx;
+  font-weight: 700;
+}
+
+.user-subtitle,
+.guest-subtitle {
+  margin-top: 8rpx;
+  font-size: 24rpx;
+  opacity: 0.88;
+}
+
+.guest-title {
+  font-size: 30rpx;
+  font-weight: 700;
+}
+
+.login-btn {
+  width: 80%;
+  margin-top: 24rpx;
+}
+
+.stats-row {
+  display: flex;
+  padding: 0 10rpx;
+}
+
+.stat-card {
+  flex: 1;
+  padding: 26rpx 10rpx;
+  text-align: center;
+}
+
+.stat-card.active {
+  background: linear-gradient(180deg, #167be2 0%, #0d61be 100%);
+}
+
+.stat-card.active .stat-num,
+.stat-card.active .stat-label {
+  color: #fff;
+}
+
+.stat-num {
+  display: block;
+  font-size: 40rpx;
+  font-weight: 700;
+  color: #1a4f84;
+}
+
+.stat-label {
+  display: block;
+  margin-top: 4rpx;
+  color: #6f849d;
+  font-size: 24rpx;
+}
+
+.function-item {
+  display: flex;
+  align-items: center;
+  padding: 24rpx 30rpx;
+  border-bottom: 1px solid #ecf2f9;
+}
+
+.function-name {
+  flex: 1;
+  margin-left: 18rpx;
+  color: #264568;
+  font-size: 28rpx;
+}
+
+.tips-card,
+.faq-card {
+  padding: 18rpx 20rpx;
+}
+
+.tips-title,
+.faq-title {
+  display: block;
+  font-size: 28rpx;
+  font-weight: 700;
+  color: #21466f;
+}
+
+.tips-item {
+  display: block;
+  margin-top: 8rpx;
+  font-size: 23rpx;
+  color: #637e9f;
+  line-height: 1.6;
+}
+
+.faq-item {
+  margin-top: 12rpx;
+  padding-top: 10rpx;
+  border-top: 1px solid #edf2f8;
+}
+
+.faq-q {
+  display: block;
+  font-size: 23rpx;
+  color: #1f4e80;
+  font-weight: 700;
+}
+
+.faq-a {
+  display: block;
+  margin-top: 6rpx;
+  font-size: 22rpx;
+  color: #6f849f;
+  line-height: 1.5;
+}
+
+.asset-header {
+  margin-bottom: 0;
+}
+
+.asset-title {
+  display: block;
+  font-size: 28rpx;
+  font-weight: 700;
+  color: #24476e;
+}
+
+.asset-item {
+  position: relative;
+  padding: 16rpx;
+}
+
+.item-content {
+  display: flex;
+}
+
+.item-image {
+  width: 150rpx;
+  height: 120rpx;
+  border-radius: 12rpx;
+}
+
+.item-info {
+  flex: 1;
+  padding-left: 16rpx;
+}
+
+.item-name {
+  display: block;
+  font-size: 28rpx;
+  font-weight: 700;
+  color: #213a5c;
+}
+
+.item-sub {
+  display: block;
+  margin-top: 8rpx;
+  color: #6f849f;
+  font-size: 24rpx;
+}
+
+.item-time {
+  display: block;
+  margin-top: 8rpx;
+  color: #97a7ba;
+  font-size: 22rpx;
+}
+
+.delete-chip {
+  position: absolute;
+  right: 16rpx;
+  top: 16rpx;
+  padding: 6rpx 14rpx;
+  border-radius: 20rpx;
+  background-color: #ffecef;
+  color: #cc3048;
+  font-size: 22rpx;
+}
+
+.stat-skeleton {
+  height: 90rpx;
+  border-radius: 14rpx;
+}
+
+.list-skeleton {
+  height: 140rpx;
+  border-radius: 14rpx;
+}

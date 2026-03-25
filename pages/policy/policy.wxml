@@ -1,0 +1,24 @@
+<view class="container" bindtap="clearTextSelection">
+  <view class="card p-30 fade-in">
+    <text user-select="{{allowTextSelect}}" class="title">隐私与服务政策</text>
+    <text user-select="{{allowTextSelect}}" class="desc mt-20">生效日期：2026-03-25</text>
+    <text user-select="{{allowTextSelect}}" class="desc mt-10">我们重视你的个人信息与数据安全。以下内容用于说明本小程序对数据的使用规则。</text>
+  </view>
+
+  <view class="card p-30 fade-in-delay-1">
+    <text user-select="{{allowTextSelect}}" class="section-title">信息收集</text>
+    <text user-select="{{allowTextSelect}}" class="desc mt-20">1. 位置信息：仅在你授权后用于“附近景点”推荐。</text>
+    <text user-select="{{allowTextSelect}}" class="desc mt-10">2. 头像昵称：仅在你主动登录后用于个人中心展示。</text>
+    <text user-select="{{allowTextSelect}}" class="desc mt-10">3. 收藏与路线：保存在本地存储，用于提升使用体验。</text>
+  </view>
+
+  <view class="card p-30 fade-in-delay-2">
+    <text user-select="{{allowTextSelect}}" class="section-title">信息使用与保护</text>
+    <text user-select="{{allowTextSelect}}" class="desc mt-20">我们不会在未经授权的情况下上传你的本地收藏数据，不会将个人信息出售给第三方。</text>
+  </view>
+
+  <view class="card p-30 fade-in-delay-2">
+    <text user-select="{{allowTextSelect}}" class="section-title">用户权利</text>
+    <text user-select="{{allowTextSelect}}" class="desc mt-20">你可以随时在微信设置中关闭相关权限，或在小程序内删除收藏与路线数据。</text>
+  </view>
+</view>

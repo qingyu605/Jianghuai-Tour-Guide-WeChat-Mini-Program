@@ -1,0 +1,3 @@
+<view class="container" bindtap="clearTextSelection">
+  <text user-select="{{allowTextSelect}}">pages/attractions/detail.wxml</text>
+</view>

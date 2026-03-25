@@ -1,0 +1,29 @@
+<view class="container" bindtap="clearTextSelection">
+  <block wx:if="{{isLoading}}">
+    <view class="card p-20"><view class="skeleton item-skeleton"></view></view>
+    <view class="card p-20"><view class="skeleton item-skeleton"></view></view>
+  </block>
+
+  <view wx:else>
+    <block wx:for="{{savedRoutes}}" wx:key="id">
+      <view class="asset-item card pressable fade-in">
+        <view class="item-content" bindtap="navigateToRouteDetail" data-id="{{item.id}}">
+          <image src="{{item.image}}" mode="aspectFill" class="item-image"></image>
+          <view class="item-info">
+            <text user-select="{{allowTextSelect}}" class="item-name">{{item.name}}</text>
+            <text user-select="{{allowTextSelect}}" class="item-sub">{{item.days}}天线路</text>
+            <text user-select="{{allowTextSelect}}" class="item-time">保存于 {{item.saveTimeText}}</text>
+          </view>
+        </view>
+        <view class="delete-chip pressable" bindtap="deleteRoute" data-id="{{item.id}}">
+          <text user-select="{{allowTextSelect}}">删除</text>
+        </view>
+      </view>
+    </block>
+
+    <view class="empty-state" wx:if="{{savedRoutes.length === 0}}">
+      <image src="/images/icons/empty-route.png" class="empty-icon"></image>
+      <text user-select="{{allowTextSelect}}" class="empty-text">暂无保存路线</text>
+    </view>
+  </view>
+</view>

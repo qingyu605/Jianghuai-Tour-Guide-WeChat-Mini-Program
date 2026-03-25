@@ -1,0 +1,84 @@
+<view class="container" bindtap="clearTextSelection">
+  <view class="head fade-in">
+    <text user-select="{{allowTextSelect}}" class="head-title">{{pageTitle}}</text>
+    <text user-select="{{allowTextSelect}}" class="head-subtitle">按类型筛选并快速规划行程</text>
+  </view>
+
+  <view class="search-container card p-20 fade-in-delay-1">
+    <view class="search-box">
+      <icon type="search" size="24" color="#7f93aa"></icon>
+      <input
+        type="text"
+        placeholder="搜索景点、城市或关键词"
+        value="{{searchKeyword}}"
+        bindinput="onSearchInput"
+        class="search-input"
+      ></input>
+      <icon type="clear" size="20" color="#97a7ba" wx:if="{{searchKeyword}}" bindtap="clearSearch"></icon>
+    </view>
+    <scroll-view scroll-x="true" class="categories-scroll">
+      <view class="categories-wrapper">
+        <block wx:for="{{categories}}" wx:key="id">
+          <view class="category-item pressable {{selectedCategory === item.name ? 'active' : ''}}" bindtap="selectCategory" data-category="{{item.name}}">
+            <text user-select="{{allowTextSelect}}">{{item.name}}</text>
+          </view>
+        </block>
+      </view>
+    </scroll-view>
+  </view>
+
+  <view class="tips-card card fade-in-delay-1">
+    <text user-select="{{allowTextSelect}}" class="tips-title">大众出行建议</text>
+    <block wx:for="{{travelTips}}" wx:key="index">
+      <text user-select="{{allowTextSelect}}" class="tips-item">{{index + 1}}. {{item}}</text>
+    </block>
+  </view>
+
+  <view class="guide-row fade-in-delay-1">
+    <block wx:for="{{quickGuides}}" wx:key="id">
+      <view class="guide-card card">
+        <text user-select="{{allowTextSelect}}" class="guide-title">{{item.title}}</text>
+        <text user-select="{{allowTextSelect}}" class="guide-text">{{item.text}}</text>
+      </view>
+    </block>
+  </view>
+
+  <block wx:if="{{isLoading}}">
+    <view class="card p-20">
+      <view class="skeleton item-skeleton"></view>
+    </view>
+    <view class="card p-20">
+      <view class="skeleton item-skeleton"></view>
+    </view>
+  </block>
+
+  <view class="attractions-list" wx:else>
+    <block wx:for="{{filteredAttractions}}" wx:key="id">
+      <view class="attraction-item card pressable fade-in-delay-2">
+        <view class="item-content" bindtap="navigateToDetail" data-id="{{item.id}}">
+          <image src="{{item.image}}" mode="aspectFill" class="attraction-image"></image>
+          <view class="attraction-info">
+            <view class="info-top">
+              <text user-select="{{allowTextSelect}}" class="attraction-name">{{item.name}}</text>
+              <text user-select="{{allowTextSelect}}" class="level-tag">{{item.level}}</text>
+            </view>
+            <text user-select="{{allowTextSelect}}" class="attraction-location">{{item.location}}</text>
+            <text user-select="{{allowTextSelect}}" class="attraction-desc line-clamp-2">{{item.description}}</text>
+            <view class="info-bottom">
+              <text user-select="{{allowTextSelect}}" class="category-tag">{{item.category}}</text>
+              <text user-select="{{allowTextSelect}}" class="distance-tag" wx:if="{{item.distanceText}}">{{item.distanceText}}</text>
+            </view>
+          </view>
+        </view>
+        <view class="favorite-btn pressable" bindtap="toggleFavorite" data-id="{{item.id}}">
+          <icon type="{{item.isFavorite ? 'star' : 'star-o'}}" size="28" color="{{item.isFavorite ? '#f8b319' : '#9aadc2'}}"></icon>
+        </view>
+      </view>
+    </block>
+
+    <view class="empty-state" wx:if="{{filteredAttractions.length === 0}}">
+      <image src="/images/icons/empty.png" class="empty-icon"></image>
+      <text user-select="{{allowTextSelect}}" class="empty-text">暂未匹配到景点</text>
+    </view>
+  </view>
+</view>

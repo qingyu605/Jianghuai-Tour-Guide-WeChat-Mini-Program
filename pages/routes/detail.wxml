@@ -1,0 +1,49 @@
+<view class="container" bindtap="clearTextSelection">
+  <block wx:if="{{isLoading}}">
+    <view class="card skeleton cover-skeleton"></view>
+    <view class="card p-30">
+      <view class="skeleton line long"></view>
+      <view class="skeleton line short mt-20"></view>
+    </view>
+  </block>
+
+  <block wx:elif="{{routeDetail}}">
+    <image src="{{routeDetail.image}}" mode="aspectFill" class="detail-image fade-in"></image>
+
+    <view class="route-basic card p-30 fade-in-delay-1">
+      <text user-select="{{allowTextSelect}}" class="route-name">{{routeDetail.name}}</text>
+      <text user-select="{{allowTextSelect}}" class="route-days mt-10">{{routeDetail.days}}天落地行程</text>
+      <text user-select="{{allowTextSelect}}" class="route-desc mt-10">{{routeDetail.description}}</text>
+      <button class="save-btn primary-btn btn mt-20 pressable" bindtap="saveRoute">保存到我的路线</button>
+    </view>
+
+    <view class="route-attractions card p-30 fade-in-delay-2">
+      <text user-select="{{allowTextSelect}}" class="section-title">途经景点</text>
+      <view class="attractions-list mt-20">
+        <block wx:for="{{routeDetail.attractions}}" wx:key="index">
+          <view class="attraction-item pressable" bindtap="navigateToDetail" data-id="{{item.id}}">
+            <icon type="location" size="24" color="#1E7DE4" class="attraction-icon"></icon>
+            <text user-select="{{allowTextSelect}}" class="attraction-name">{{item.name}}</text>
+            <text user-select="{{allowTextSelect}}" class="attraction-location">{{item.location}}</text>
+          </view>
+        </block>
+      </view>
+    </view>
+
+    <view class="route-itinerary card p-30 fade-in-delay-2">
+      <text user-select="{{allowTextSelect}}" class="section-title">行程安排</text>
+      <view class="itinerary-list mt-20">
+        <block wx:for="{{routeDetail.itinerary}}" wx:key="index">
+          <view class="itinerary-item">
+            <view class="day-mark"><text user-select="{{allowTextSelect}}">D{{index + 1}}</text></view>
+            <text user-select="{{allowTextSelect}}" class="itinerary-content">{{item}}</text>
+          </view>
+        </block>
+      </view>
+    </view>
+  </block>
+
+  <view class="empty-state" wx:else>
+    <text user-select="{{allowTextSelect}}" class="empty-text">路线数据加载失败</text>
+  </view>
+</view>

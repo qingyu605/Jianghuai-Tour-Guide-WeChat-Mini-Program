@@ -1,0 +1,132 @@
+<view class="container" bindtap="clearTextSelection">
+  <block wx:if="{{isLoading}}">
+    <view class="card skeleton hero-skeleton"></view>
+    <view class="card p-20">
+      <view class="skeleton line long"></view>
+      <view class="skeleton line short mt-20"></view>
+    </view>
+    <view class="card p-20">
+      <view class="skeleton line long"></view>
+      <view class="skeleton line long mt-20"></view>
+      <view class="skeleton line short mt-20"></view>
+    </view>
+  </block>
+
+  <block wx:else>
+    <view class="hero-card card fade-in">
+      <swiper
+        class="hero-swiper"
+        circular="{{true}}"
+        autoplay="{{true}}"
+        interval="4500"
+        duration="500"
+        indicator-dots="{{true}}"
+        indicator-color="rgba(255,255,255,0.45)"
+        indicator-active-color="#ffffff"
+      >
+        <block wx:for="{{banners}}" wx:key="id">
+          <swiper-item>
+            <image src="{{item.image}}" mode="aspectFill" class="hero-image"></image>
+          </swiper-item>
+        </block>
+      </swiper>
+      <view class="hero-mask">
+        <text user-select="{{allowTextSelect}}" class="hero-title">江淮风景线</text>
+        <text user-select="{{allowTextSelect}}" class="hero-subtitle">商旅休闲皆适用的江淮旅游导览服务</text>
+      </view>
+    </view>
+
+    <view class="section">
+      <view class="section-header">
+        <text user-select="{{allowTextSelect}}" class="section-title">导览服务</text>
+      </view>
+      <view class="features-container card">
+        <view class="features-grid">
+          <block wx:for="{{features}}" wx:key="id">
+            <view class="feature-item pressable" bindtap="onFeatureTap" data-action="{{item.action}}">
+              <view class="feature-icon-wrap">
+                <image src="{{item.icon}}" class="feature-icon"></image>
+              </view>
+              <text user-select="{{allowTextSelect}}" class="feature-name">{{item.name}}</text>
+            </view>
+          </block>
+        </view>
+      </view>
+    </view>
+
+    <view class="stats-strip card fade-in-delay-1">
+      <block wx:for="{{platformStats}}" wx:key="id">
+        <view class="stat-item">
+          <text user-select="{{allowTextSelect}}" class="stat-value">{{item.value}}</text>
+          <text user-select="{{allowTextSelect}}" class="stat-label">{{item.label}}</text>
+        </view>
+      </block>
+    </view>
+
+    <view class="notice-card card fade-in-delay-1">
+      <text user-select="{{allowTextSelect}}" class="notice-title">出行提示</text>
+      <block wx:for="{{travelNotices}}" wx:key="index">
+        <text user-select="{{allowTextSelect}}" class="notice-item">{{index + 1}}. {{item}}</text>
+      </block>
+    </view>
+
+    <view class="section fade-in-delay-2">
+      <view class="section-header">
+        <text user-select="{{allowTextSelect}}" class="section-title">热门景点</text>
+        <view class="more-btn pressable" bindtap="navigateToAttractions">
+          <text user-select="{{allowTextSelect}}" class="more-btn-label">查看全部 ></text>
+        </view>
+      </view>
+      <view class="attractions-grid">
+        <block wx:for="{{recommendedAttractions}}" wx:key="id">
+          <view class="attraction-card card pressable" bindtap="navigateToDetail" data-id="{{item.id}}">
+            <image src="{{item.image}}" mode="aspectFill" class="attraction-image"></image>
+            <view class="attraction-info">
+              <view class="attraction-head">
+                <text user-select="{{allowTextSelect}}" class="attraction-name">{{item.name}}</text>
+                <text user-select="{{allowTextSelect}}" class="level-pill">{{item.level}}</text>
+              </view>
+              <text user-select="{{allowTextSelect}}" class="attraction-location">{{item.location}}</text>
+              <text user-select="{{allowTextSelect}}" class="category-pill">{{item.category}}</text>
+            </view>
+          </view>
+        </block>
+      </view>
+    </view>
+
+    <view class="section fade-in-delay-2">
+      <view class="section-header">
+        <text user-select="{{allowTextSelect}}" class="section-title">热门路线</text>
+        <view class="more-btn pressable" bindtap="navigateToRoutes">
+          <text user-select="{{allowTextSelect}}" class="more-btn-label">路线库 ></text>
+        </view>
+      </view>
+      <view class="routes-list">
+        <block wx:for="{{hotRoutes}}" wx:key="id">
+          <view class="route-item card pressable" bindtap="navigateToRouteDetail" data-id="{{item.id}}">
+            <image src="{{item.image}}" mode="aspectFill" class="route-image"></image>
+            <view class="route-info">
+              <text user-select="{{allowTextSelect}}" class="route-name">{{item.name}}</text>
+              <text user-select="{{allowTextSelect}}" class="route-meta">{{item.days}}天行程</text>
+              <text user-select="{{allowTextSelect}}" class="route-desc line-clamp-2">{{item.description}}</text>
+            </view>
+          </view>
+        </block>
+      </view>
+    </view>
+
+    <view class="section fade-in-delay-2">
+      <view class="section-header">
+        <text user-select="{{allowTextSelect}}" class="section-title">城市导览</text>
+      </view>
+      <view class="city-grid">
+        <block wx:for="{{cityGuides}}" wx:key="id">
+          <view class="city-card card pressable" bindtap="navigateToCityGuide" data-id="{{item.target}}">
+            <text user-select="{{allowTextSelect}}" class="city-name">{{item.name}}</text>
+            <text user-select="{{allowTextSelect}}" class="city-desc">{{item.desc}}</text>
+          </view>
+        </block>
+      </view>
+    </view>
+  </block>
+</view>

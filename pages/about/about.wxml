@@ -1,0 +1,24 @@
+<view class="container" bindtap="clearTextSelection">
+  <view class="card p-30 fade-in">
+    <text user-select="{{allowTextSelect}}" class="title">江淮风景线使用说明</text>
+    <text user-select="{{allowTextSelect}}" class="desc mt-20">本小程序用于提供江淮地区景点导览、路线参考与行程辅助服务，内容仅供出行决策参考。</text>
+  </view>
+
+  <view class="card p-30 fade-in-delay-1">
+    <text user-select="{{allowTextSelect}}" class="section-title">服务内容</text>
+    <text user-select="{{allowTextSelect}}" class="desc mt-20">1. 景点信息展示与检索</text>
+    <text user-select="{{allowTextSelect}}" class="desc mt-10">2. 路线推荐与收藏管理</text>
+    <text user-select="{{allowTextSelect}}" class="desc mt-10">3. 地图导航与文字导览</text>
+  </view>
+
+  <view class="card p-30 fade-in-delay-2">
+    <text user-select="{{allowTextSelect}}" class="section-title">免责声明</text>
+    <text user-select="{{allowTextSelect}}" class="desc mt-20">景区开放时间、票务政策、交通信息可能调整，请以官方公告为准。因第三方服务变更导致的信息偏差，本小程序不承担直接责任。</text>
+  </view>
+
+  <view class="card p-30 fade-in-delay-2">
+    <text user-select="{{allowTextSelect}}" class="section-title">商务联系</text>
+    <text user-select="{{allowTextSelect}}" class="desc mt-20">合作邮箱：business@example.com</text>
+    <text user-select="{{allowTextSelect}}" class="desc mt-10">服务时间：工作日 09:00-18:00</text>
+  </view>
+</view>

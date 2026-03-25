@@ -1,0 +1,56 @@
+.asset-item {
+  position: relative;
+  padding: 16rpx;
+}
+
+.item-content {
+  display: flex;
+}
+
+.item-image {
+  width: 170rpx;
+  height: 130rpx;
+  border-radius: 12rpx;
+}
+
+.item-info {
+  flex: 1;
+  padding-left: 16rpx;
+}
+
+.item-name {
+  display: block;
+  font-size: 28rpx;
+  font-weight: 700;
+  color: #213a5c;
+}
+
+.item-sub {
+  display: block;
+  margin-top: 8rpx;
+  color: #6f849f;
+  font-size: 24rpx;
+}
+
+.item-time {
+  display: block;
+  margin-top: 8rpx;
+  color: #97a7ba;
+  font-size: 22rpx;
+}
+
+.delete-chip {
+  position: absolute;
+  right: 16rpx;
+  top: 16rpx;
+  padding: 6rpx 14rpx;
+  border-radius: 20rpx;
+  background-color: #ffecef;
+  color: #cc3048;
+  font-size: 22rpx;
+}
+
+.item-skeleton {
+  height: 140rpx;
+  border-radius: 14rpx;
+}

@@ -1,0 +1,174 @@
+<view class="container" bindtap="clearTextSelection">
+  <block wx:if="{{isLoading}}">
+    <view class="card skeleton cover-skeleton"></view>
+    <view class="card p-30">
+      <view class="skeleton line long"></view>
+      <view class="skeleton line short mt-20"></view>
+    </view>
+  </block>
+
+  <block wx:elif="{{attraction}}">
+    <view class="image-hero">
+      <view class="image-container">
+        <swiper
+          class="main-swiper"
+          circular="{{true}}"
+          current="{{currentImageIndex}}"
+          bindchange="onImageSwiperChange"
+        >
+          <block wx:for="{{attraction.images}}" wx:key="index">
+            <swiper-item>
+              <image
+                src="{{item}}"
+                mode="aspectFill"
+                class="main-image"
+                bindtap="previewImage"
+                data-img="{{item}}"
+              ></image>
+            </swiper-item>
+          </block>
+        </swiper>
+
+        <view class="image-overlay">
+          <view class="hero-title-wrap">
+            <text user-select="{{allowTextSelect}}" class="hero-name">{{attraction.name}}</text>
+            <text user-select="{{allowTextSelect}}" class="hero-slogan">{{attraction.slogan}}</text>
+          </view>
+          <view class="hero-badge-row">
+            <text user-select="{{allowTextSelect}}" class="hero-badge">{{attraction.level}}</text>
+            <text user-select="{{allowTextSelect}}" class="hero-badge">{{attraction.bestSeason}}</text>
+            <text user-select="{{allowTextSelect}}" class="hero-badge">建议{{attraction.recommendedDuration}}</text>
+          </view>
+        </view>
+
+        <view class="image-nav" wx:if="{{attraction.images.length > 1}}">
+          <view class="image-btn prev-btn pressable" bindtap="changeImage" data-direction="prev">
+            <text user-select="{{allowTextSelect}}" class="nav-arrow">‹</text>
+          </view>
+          <view class="image-btn next-btn pressable" bindtap="changeImage" data-direction="next">
+            <text user-select="{{allowTextSelect}}" class="nav-arrow">›</text>
+          </view>
+        </view>
+
+        <view class="image-counter">
+          <text user-select="{{allowTextSelect}}">{{currentImageIndex + 1}} / {{attraction.images.length}}</text>
+        </view>
+
+        <view class="favorite-btn pressable" bindtap="toggleFavorite">
+          <image src="/images/icons/favorite.png" class="favorite-mini-icon"></image>
+          <icon
+            type="{{isFavorite ? 'star' : 'star-o'}}"
+            size="28"
+            color="{{isFavorite ? '#FFD700' : 'white'}}"
+          ></icon>
+        </view>
+      </view>
+
+      <view class="thumb-list" wx:if="{{attraction.images.length > 1}}">
+        <block wx:for="{{attraction.images}}" wx:key="index">
+          <image
+            src="{{item}}"
+            mode="aspectFill"
+            class="thumb-item pressable {{currentImageIndex === index ? 'active' : ''}}"
+            bindtap="selectImage"
+            data-index="{{index}}"
+          ></image>
+        </block>
+      </view>
+    </view>
+
+    <view class="basic-info card p-30">
+      <view class="info-header">
+        <text user-select="{{allowTextSelect}}" class="attraction-name font-lg">{{attraction.name}}</text>
+        <text user-select="{{allowTextSelect}}" class="level-tag">{{attraction.level}}</text>
+      </view>
+      <text user-select="{{allowTextSelect}}" class="attraction-slogan mt-10">{{attraction.slogan}}</text>
+
+      <view class="location-info mt-20">
+        <icon type="location" size="28" color="#1E88E5"></icon>
+        <text user-select="{{allowTextSelect}}" class="location-text color-gray">{{attraction.location}}</text>
+      </view>
+
+      <view class="category-info mt-10">
+        <text user-select="{{allowTextSelect}}" class="category-tag">{{attraction.category}}</text>
+      </view>
+    </view>
+
+    <view class="visit-profile card p-30">
+      <text user-select="{{allowTextSelect}}" class="section-title font-lg">游览档案</text>
+      <view class="profile-row mt-20">
+        <view class="profile-tag">
+          <text user-select="{{allowTextSelect}}" class="profile-label">最佳季节</text>
+          <text user-select="{{allowTextSelect}}" class="profile-value">{{attraction.bestSeason}}</text>
+        </view>
+        <view class="profile-tag">
+          <text user-select="{{allowTextSelect}}" class="profile-label">建议时长</text>
+          <text user-select="{{allowTextSelect}}" class="profile-value">{{attraction.recommendedDuration}}</text>
+        </view>
+      </view>
+      <text user-select="{{allowTextSelect}}" class="crowd-advice mt-20">人流建议：{{attraction.crowdAdvice}}</text>
+    </view>
+
+    <view class="highlight-section card p-30" wx:if="{{attraction.highlights.length}}">
+      <text user-select="{{allowTextSelect}}" class="section-title font-lg">必看点位</text>
+      <view class="highlight-list mt-20">
+        <block wx:for="{{attraction.highlights}}" wx:key="index">
+          <text user-select="{{allowTextSelect}}" class="highlight-chip">{{item}}</text>
+        </block>
+      </view>
+    </view>
+
+    <view class="detail-info card p-30">
+      <text user-select="{{allowTextSelect}}" class="section-title font-lg">景点介绍</text>
+      <text user-select="{{allowTextSelect}}" class="description mt-20 color-gray">{{attraction.description}}</text>
+    </view>
+
+    <view class="practical-info card p-30">
+      <text user-select="{{allowTextSelect}}" class="section-title font-lg">实用信息</text>
+
+      <view class="info-item mt-20">
+        <text user-select="{{allowTextSelect}}" class="info-label">开放时间：</text>
+        <text user-select="{{allowTextSelect}}" class="info-value color-gray">{{attraction.openingHours}}</text>
+      </view>
+
+      <view class="info-item mt-10">
+        <text user-select="{{allowTextSelect}}" class="info-label">门票价格：</text>
+        <text user-select="{{allowTextSelect}}" class="info-value color-gray">{{attraction.ticketPrice}}</text>
+      </view>
+    </view>
+
+    <view class="function-buttons p-30">
+      <view class="btn-group">
+        <view class="audio-control" bindtap="showTextGuide">
+          <view class="btn-icon-wrap">
+            <image src="/images/icons/audio.png" class="btn-icon"></image>
+          </view>
+          <text user-select="{{allowTextSelect}}" class="audio-text">文字导览</text>
+        </view>
+
+        <view class="location-btn" bindtap="openLocation">
+          <view class="btn-icon-wrap">
+            <image src="/images/icons/location.png" class="btn-icon"></image>
+          </view>
+          <text user-select="{{allowTextSelect}}" class="btn-label">地图导航</text>
+        </view>
+      </view>
+    </view>
+  </block>
+
+  <view class="empty-state" wx:else>
+    <text user-select="{{allowTextSelect}}" class="empty-text">加载中...</text>
+  </view>
+
+  <view class="guide-mask" wx:if="{{showGuidePanel}}" bindtap="hideTextGuide">
+    <view class="guide-panel" catchtap="onGuidePanelTap">
+      <view class="guide-header">
+        <text user-select="{{allowTextSelect}}" class="guide-title">文字导览</text>
+        <text user-select="{{allowTextSelect}}" class="guide-close" bindtap="hideTextGuide">关闭</text>
+      </view>
+      <scroll-view scroll-y="true" class="guide-content">
+        <text user-select="{{allowTextSelect}}" class="guide-text">{{guideText}}</text>
+      </scroll-view>
+    </view>
+  </view>
+</view>

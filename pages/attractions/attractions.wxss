@@ -1,0 +1,183 @@
+.head {
+  padding: 26rpx 30rpx 10rpx;
+}
+
+.head-title {
+  font-size: 40rpx;
+  font-weight: 700;
+  color: #17355d;
+  display: block;
+}
+
+.head-subtitle {
+  margin-top: 8rpx;
+  color: #6a819b;
+  font-size: 24rpx;
+  display: block;
+}
+
+.search-box {
+  display: flex;
+  align-items: center;
+  background-color: #f2f6fb;
+  border-radius: 60rpx;
+  padding: 12rpx 18rpx;
+}
+
+.tips-card {
+  padding: 18rpx 20rpx;
+}
+
+.tips-title {
+  display: block;
+  font-size: 28rpx;
+  font-weight: 700;
+  color: #21466f;
+}
+
+.tips-item {
+  display: block;
+  margin-top: 8rpx;
+  font-size: 23rpx;
+  color: #637e9f;
+  line-height: 1.6;
+}
+
+.guide-row {
+  display: flex;
+  gap: 12rpx;
+  padding: 0 20rpx;
+}
+
+.guide-card {
+  flex: 1;
+  padding: 16rpx;
+}
+
+.guide-title {
+  display: block;
+  font-size: 25rpx;
+  font-weight: 700;
+  color: #21507f;
+}
+
+.guide-text {
+  display: block;
+  margin-top: 8rpx;
+  font-size: 22rpx;
+  color: #6c84a1;
+  line-height: 1.5;
+}
+
+.search-input {
+  flex: 1;
+  height: 56rpx;
+  font-size: 26rpx;
+  margin: 0 10rpx;
+}
+
+.categories-scroll {
+  margin-top: 18rpx;
+  white-space: nowrap;
+}
+
+.categories-wrapper {
+  display: inline-flex;
+  gap: 12rpx;
+}
+
+.category-item {
+  padding: 10rpx 24rpx;
+  border-radius: 30rpx;
+  background-color: #edf4fd;
+  color: #466589;
+  font-size: 24rpx;
+}
+
+.category-item.active {
+  background: linear-gradient(180deg, #1c80e6 0%, #0f66c8 100%);
+  color: #fff;
+}
+
+.attraction-item {
+  position: relative;
+  padding: 16rpx;
+}
+
+.item-content {
+  display: flex;
+}
+
+.attraction-image {
+  width: 220rpx;
+  height: 180rpx;
+  border-radius: 14rpx;
+}
+
+.attraction-info {
+  flex: 1;
+  padding-left: 18rpx;
+}
+
+.info-top {
+  display: flex;
+  justify-content: space-between;
+}
+
+.attraction-name {
+  font-size: 30rpx;
+  font-weight: 700;
+  color: #1f3a5a;
+}
+
+.level-tag {
+  font-size: 22rpx;
+  color: #fff;
+  background-color: #ff9f30;
+  padding: 4rpx 10rpx;
+  border-radius: 8rpx;
+}
+
+.attraction-location {
+  display: block;
+  margin-top: 6rpx;
+  color: #6f849d;
+  font-size: 24rpx;
+}
+
+.attraction-desc {
+  margin-top: 10rpx;
+  color: #7a8ea6;
+  font-size: 24rpx;
+}
+
+.info-bottom {
+  margin-top: 10rpx;
+  display: flex;
+  align-items: center;
+  gap: 10rpx;
+}
+
+.category-tag {
+  padding: 3rpx 10rpx;
+  border-radius: 20rpx;
+  background-color: #eaf4ff;
+  color: #2867aa;
+  font-size: 22rpx;
+}
+
+.distance-tag {
+  font-size: 22rpx;
+  color: #0b7de5;
+}
+
+.favorite-btn {
+  position: absolute;
+  right: 24rpx;
+  top: 24rpx;
+}
+
+.item-skeleton {
+  height: 180rpx;
+  border-radius: 16rpx;
+}
