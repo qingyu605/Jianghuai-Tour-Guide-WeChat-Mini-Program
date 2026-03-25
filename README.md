@@ -56,28 +56,28 @@
 
 ```text
 .
-├── app.js
-├── app.json
-├── app.wxss
-├── pages
-│   ├── index
-│   ├── attractions
-│   ├── detail
-│   ├── routes
-│   ├── my
-│   ├── about
-│   └── policy
-├── utils
-│   ├── data.js
-│   └── status.js
-├── images
-│   ├── attractions
-│   ├── banners
-│   ├── icons
-│   ├── routes
-│   └── tab
-├── sitemap.json
-└── LAUNCH_CHECKLIST.md
+├── app.js              # 小程序入口文件
+├── app.json            # 全局配置文件
+├── app.wxss            # 全局样式文件
+├── pages/              # 页面目录
+│   ├── index/          # 首页
+│   ├── attractions/    # 景点列表页
+│   ├── detail/         # 景点详情页
+│   ├── routes/         # 路线列表页
+│   ├── my/             # 个人中心
+│   ├── about/          # 使用说明
+│   └── policy/         # 隐私政策
+├── utils/              # 工具目录
+│   ├── data.js         # 数据源
+│   └── status.js       # 状态管理
+├── images/             # 图片资源
+│   ├── attractions/    # 景点图片
+│   ├── banners/        # 轮播图
+│   ├── icons/          # 图标
+│   ├── routes/         # 路线图片
+│   └── tab/            # 底部导航图标
+├── sitemap.json        # 站点地图
+└── README.md           # 项目说明
 ```
 
 ## 5. 本地运行
@@ -91,61 +91,147 @@
 ## 6. 关键配置说明
 
 ### `app.json`
-- 页面注册
-- tabBar 配置
-- 导航栏样式
-- 定位权限说明（`scope.userLocation`）
+- 页面注册：定义小程序的所有页面路径
+- tabBar 配置：底部导航栏的样式和跳转链接
+- 导航栏样式：设置全局导航栏背景色、标题等
+- 定位权限说明：申请用户位置权限的描述
 
 ### `utils/data.js`
-- 景点与路线基础数据
-- 景点导览扩展信息
-- 路线景点解析能力
+- 景点与路线基础数据：包含景点详情、路线信息等
+- 景点导览扩展信息：提供详细的导览文本和景点档案
+- 路线景点解析能力：将路线中的景点ID解析为具体信息
 
 ### `utils/status.js`
-- 全局统一状态提示
-- 骨架屏最短展示时长策略
+- 全局统一状态提示：封装了 toast、success、info、warn 等提示方法
+- 骨架屏最短展示时长策略：确保骨架屏至少显示一定时间，提升用户体验
 
 ## 7. 数据与存储
 
 本项目默认使用本地存储：
 
-- `favorites`：收藏景点
-- `savedRoutes`：保存路线
-- `userInfo`：登录后用户信息（本地）
+- `favorites`：收藏景点列表
+- `savedRoutes`：保存的路线列表
+- `userInfo`：登录后用户信息（本地存储）
 
-## 8. GitHub 上传指南
+## 8. API 说明
 
-在项目根目录执行（首次上传）：
+### 数据源 API
 
-```bash
-git init
-git add .
-git commit -m "feat: init jianghuai travel mini-program"
-git branch -M main
-git remote add origin https://github.com/<your-name>/<your-repo>.git
-git push -u origin main
-```
+#### `getAttractionDetail(id)`
+- **功能**：获取景点详细信息
+- **参数**：`id` - 景点ID
+- **返回值**：包含景点基本信息、导览信息和档案信息的对象
 
-后续更新：
+#### `getAttractionsByCategory(category)`
+- **功能**：按分类筛选景点
+- **参数**：`category` - 分类名称，传入"全部"或空值返回所有景点
+- **返回值**：符合条件的景点列表
 
-```bash
-git add .
-git commit -m "feat: update pages and styles"
-git push
-```
+#### `searchAttractions(keyword)`
+- **功能**：搜索景点
+- **参数**：`keyword` - 搜索关键词
+- **返回值**：包含关键词的景点列表
 
-## 9. 发布前检查
+#### `getRouteList()`
+- **功能**：获取路线列表
+- **返回值**：解析后的路线列表
 
-请按根目录文档执行：
+#### `getRouteDetail(id)`
+- **功能**：获取路线详情
+- **参数**：`id` - 路线ID
+- **返回值**：包含路线详情和解析后景点信息的对象
 
-- [LAUNCH_CHECKLIST.md](LAUNCH_CHECKLIST.md)
+#### `getAttractionGuideText(id)`
+- **功能**：获取景点导览文本
+- **参数**：`id` - 景点ID
+- **返回值**：格式化的导览文本字符串
 
-重点包括：
-- 隐私合规（平台隐私指引一致）
-- 真机回归（定位、收藏、路线、导览）
-- 文案与商务联系方式复核
+### 状态管理 API
 
-## 10. 常见问题
+#### `success(title)`
+- **功能**：显示成功提示
+- **参数**：`title` - 提示文本
+
+#### `info(title)`
+- **功能**：显示信息提示
+- **参数**：`title` - 提示文本
+
+#### `warn(title)`
+- **功能**：显示警告提示
+- **参数**：`title` - 提示文本
+
+#### `runWithMinDuration(startAt, callback, minMs)`
+- **功能**：确保回调函数至少在指定时间后执行
+- **参数**：
+  - `startAt` - 开始时间戳
+  - `callback` - 回调函数
+  - `minMs` - 最小执行时间（默认220ms）
+
+## 9. 核心功能实现
+
+### 1. 景点收藏功能
+- **实现方式**：使用本地存储 `wx.setStorageSync` 和 `wx.getStorageSync`
+- **核心逻辑**：
+  - 检查景点是否已收藏
+  - 切换收藏状态
+  - 更新本地存储
+  - 刷新界面显示
+
+### 2. 附近景点功能
+- **实现方式**：使用微信小程序 `wx.getLocation` API 获取用户位置
+- **核心逻辑**：
+  - 申请位置权限
+  - 获取用户坐标
+  - 计算与各景点的距离
+  - 按距离排序并显示
+
+### 3. 路线保存功能
+- **实现方式**：使用本地存储 `wx.setStorageSync` 和 `wx.getStorageSync`
+- **核心逻辑**：
+  - 检查路线是否已保存
+  - 切换保存状态
+  - 更新本地存储
+  - 刷新界面显示
+
+### 4. 地图导航功能
+- **实现方式**：使用微信小程序 `wx.openLocation` API
+- **核心逻辑**：
+  - 获取景点坐标
+  - 调用微信地图 API
+  - 显示导航信息
+
+### 5. 文字导览功能
+- **实现方式**：使用模态框展示导览文本
+- **核心逻辑**：
+  - 获取景点导览文本
+  - 显示模态框
+  - 提供复制功能
+
+## 10. 项目亮点
+
+1. **完整的旅游导览功能**：覆盖景点浏览、路线推荐、收藏管理、地图导航等核心功能
+2. **良好的用户体验**：包含骨架屏、加载状态、操作反馈等细节处理
+3. **响应式设计**：适配不同屏幕尺寸的设备
+4. **模块化架构**：代码结构清晰，易于维护和扩展
+5. **丰富的数据源**：包含详细的景点信息、路线信息和导览内容
+6. **本地存储方案**：无需后端服务即可实现基本功能
+7. **商用级界面**：符合现代UI设计标准，支持直接上线使用
+
+## 11. 部署与发布
+
+### 发布前准备
+1. 完成 AppID 配置
+2. 确保所有页面功能正常
+3. 检查隐私政策合规性
+4. 测试定位、收藏、路线等核心功能
+5. 优化图片资源大小
+
+### 发布流程
+1. 在微信开发者工具中点击「上传」
+2. 在微信公众平台后台提交审核
+3. 审核通过后发布上线
+
+## 12. 常见问题
 
 ### Q1：为什么“附近景点”不可用？
 通常是定位权限未开启。请在微信设置中开启位置权限后重试。
@@ -156,6 +242,12 @@ git push
 ### Q3：可以商用吗？
 可以作为商用基础模板，但上线前请完成你主体下的资质、隐私与类目审核。
 
-## 11. 许可证
+### Q4：如何添加新的景点和路线？
+修改 `utils/data.js` 文件，在 `attractions` 和 `rawRoutes` 数组中添加新的数据。
 
-MIT License
+### Q5：如何修改小程序的颜色主题？
+修改 `app.json` 中的 `navigationBarBackgroundColor` 和 `tabBar` 相关颜色配置。
+
+## 13. 许可证
+
+Apache License 2.0 
